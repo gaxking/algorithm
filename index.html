@@ -1,12 +1,12 @@
 <html>
 	<body>
-
 	</body>
 	<script>
 		var data = [9,1,5,8,3,7,4,6,2];
 		var count = 0;
 		function BubbleSort(){
 			for(var i = 0; i < data.length; i++){
+				count ++;
 				for(var j = data.length; j > 0; j--){
 					if(data[j] < data[j-1]){
 						data[j] = [data[j-1],data[j-1] = data[j]][0];
@@ -19,11 +19,13 @@
 
 		function SelectSort(){
 			for(var i = 0; i < data.length; i++){
+				count ++;
 				var min = i;
 				for(var j = i+1; j < data.length; j++){
 					if(data[j] < data[min]){
 						min = j;
 					}
+					count ++;
 				}
 
 				if(min!=i){
@@ -36,9 +38,10 @@
 		function InsertSort(){
 			//var data = [5,3,4,6,2];
 			for(var i = 1; i <= data.length; i++){
+				count ++;
 				if(data[i-1] > data[i]){
 					var save = data[i];
-					for(var j = i - 1; data[j] > data[i]; j--){
+					for(var j = i - 1; data[j] > save; j--){
 						data[j+1] = data[j];
 						count ++;
 					}
@@ -48,6 +51,6 @@
 			}
 		}
 
-		InsertSort();
+		SelectSort();
 	</script>
 </html>
