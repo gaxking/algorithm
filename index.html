@@ -51,6 +51,24 @@
 			}
 		}
 
-		SelectSort();
+		function ShellSort(){
+			var increment = data.length;
+			do
+			{
+				increment = parseInt(increment/3) + 1;
+				if(var i = increment;i<=data.length;i++){
+					if(data[i] < data[i-increment])
+					{
+						var save = data[i];
+						for(j=i-increment;j>0&&save<data[j];j-=increment){
+							data[j+increment] = data[j];
+						}
+						data[j+increment] = save;
+					}
+				}
+			}
+			while (increment>1);
+		}
+		ShellSort();
 	</script>
 </html>
