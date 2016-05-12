@@ -1,9 +1,9 @@
 <html>
-	<body>
-	</body>
 	<script>
 		var data = [9,1,5,8,3,7,4,6,2];
 		var count = 0;
+
+		//冒泡排序
 		function BubbleSort(){
 			for(var i = 0; i < data.length; i++){
 				count ++;
@@ -17,6 +17,7 @@
 			}
 		}
 
+		//简单选择排序
 		function SelectSort(){
 			for(var i = 0; i < data.length; i++){
 				count ++;
@@ -35,6 +36,7 @@
 			}
 		}
 
+		//直接插入排序
 		function InsertSort(){
 			//var data = [5,3,4,6,2];
 			for(var i = 1; i <= data.length; i++){
@@ -51,19 +53,24 @@
 			}
 		}
 
+		//希尔排序
 		function ShellSort(){
 			var increment = data.length;
 			do
 			{
+				count ++;
 				increment = parseInt(increment/3) + 1;
-				if(var i = increment;i<=data.length;i++){
+				for(var i = increment;i<=data.length;i++){
+					count ++;
 					if(data[i] < data[i-increment])
 					{
 						var save = data[i];
-						for(j=i-increment;j>0&&save<data[j];j-=increment){
+						for(j=i-increment;j>=0&&save<data[j];j-=increment){
+							count ++;
 							data[j+increment] = data[j];
 						}
 						data[j+increment] = save;
+						console.log(data.toString());
 					}
 				}
 			}
