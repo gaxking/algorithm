@@ -76,6 +76,40 @@
 			}
 			while (increment>1);
 		}
-		ShellSort();
+
+		//堆排序
+		function HeapSort(){
+			data.unshift(null);
+
+			for(var i = parseInt((data.length-1)/2);i>0;i--){
+				count++;
+				HeadAdjust(data, i, data.length-1);
+				console.log(data.toString());
+			}
+
+			for(var x = data.length-1; x>0; x--){
+				count++;
+				data[x] = [data[1],data[1] = data[x]][0];
+				HeadAdjust(data, 1, x-1);
+				console.log(data);
+			}
+		}
+
+		function HeadAdjust(data, s, l){
+			var temp = data[s];
+			for(var j=2*s; j<=l; j*=2) {
+				count++;
+				if(j<l && data[j]<data[j+1]){
+					j++;
+				}
+				if(temp < data[j]){
+					data[s] = data[j];
+					s = j;
+				}
+			}
+			data[s] = temp;
+		}
+
+		InsertSort();
 	</script>
 </html>
