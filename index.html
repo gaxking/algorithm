@@ -3,14 +3,53 @@
 <head>
 	<meta charset="UTF-8">
 	<title></title>
-	<script src="main.js"></script>
 </head>
 <body>
-	<button onclick="BubbleSort()">冒泡排序</button>
-	<button onclick="SelectSort()">简单选择排序</button>
-	<button onclick="InsertSort()">直接插入排序</button>
-	<button onclick="ShellSort()">希尔排序</button>
-	<button onclick="HeapSort()">堆排序</button>
-	<button onclick="mergeSort()">并归排序</button>
+	<button onclick="start('BubbleSort')">冒泡排序</button>
+	<button onclick="start('SelectSort')">简单选择排序</button>
+	<button onclick="start('InsertSort')">直接插入排序</button>
+	<button onclick="start('ShellSort')">希尔排序</button>
+	<button onclick="start('HeapSort')">堆排序</button>
+	<button onclick="start('mergeSort')">并归排序</button>
+	<button onclick="start('quickSort')">快速排序</button>
+	<br>
+	<br>
+	待排序数据:	<input id="input" type="input" value="9,1,5,8,3,7,4,6,2" />(逗号隔开)
+	<br>
+	<br>output:
+	<div id="output"></div>
 </body>
+<script>
+	var input = document.querySelector('#input'),
+		output = document.querySelector('#output');
+
+	function start(name){
+		var data = JSON.parse("[" + input.value + "]"), result;
+		switch(name){
+			case 'BubbleSort':
+				result = BubbleSort(data);
+			break;
+			case 'SelectSort':
+				result = SelectSort(data);
+			break;
+			case 'InsertSort':
+				result = InsertSort(data);
+			break;
+			case 'ShellSort':
+				result = ShellSort(data);
+			break;
+			case 'HeapSort':
+				result = HeapSort(data);
+			break;
+			case 'mergeSort':
+				result = mergeSort(data);
+			break;
+			case 'quickSort':
+				result = mergeSort(data);
+			break;
+		}
+		output.innerHTML = result.toString();
+	}
+</script>
+<script src="main.js"></script>
 </html>
