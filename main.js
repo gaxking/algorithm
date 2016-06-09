@@ -1,8 +1,6 @@
-var data = [9, 1, 5, 8, 3, 7, 4, 6, 2];
 var count = 0;
-
 //冒泡排序
-function BubbleSort() {
+function BubbleSort(data) {
 	for(var i = 0; i < data.length; i++) {
 		count ++;
 		for(var j = data.length; j > 0; j--) {
@@ -13,10 +11,11 @@ function BubbleSort() {
 			//console.log(data);
 		}
 	}
+	return data;
 }
 
 //简单选择排序
-function SelectSort() {
+function SelectSort(data) {
 	for(var i = 0; i < data.length; i++) {
 		count ++;
 		var min = i;
@@ -32,10 +31,11 @@ function SelectSort() {
 		}
 		//console.log(data);
 	}
+	return data;
 }
 
 //直接插入排序
-function InsertSort() {
+function InsertSort(data) {
 	//var data = [5,3,4,6,2];
 	for(var i = 1; i <= data.length; i++) {
 		count ++;
@@ -49,10 +49,11 @@ function InsertSort() {
 			//console.log(data.toString());
 		}
 	}
+	return data;
 }
 
 //希尔排序
-function ShellSort() {
+function ShellSort(data) {
 	var increment = data.length;
 	do
 	{
@@ -72,10 +73,11 @@ function ShellSort() {
 		}
 	}
 	while (increment>1);
+	return data;
 }
 
 //堆排序
-function HeapSort() {
+function HeapSort(data) {
 	data.unshift(null);
 
 	for(var i = parseInt((data.length-1)/2);i>0;i--) {
@@ -90,6 +92,7 @@ function HeapSort() {
 		HeadAdjust(data, 1, x-1);
 		//console.log(data);
 	}
+	return data;
 }
 
 function HeadAdjust(data, s, l) {
@@ -131,6 +134,34 @@ function mergeSort(data) {
 	return merge(mergeSort(left), mergeSort(right));
 }
 
-var a = mergeSort(data);
+function quickSort(data) {
+	QSort(data, 0, data.length-1);
+	return data;
+}
 
-console.log(a);
+function QSort(data, low, high) {
+	var pivot;
+	if(low < high) {
+		pivot = Partition(data, low, high);
+
+		QSort(data, low, pivot-1);
+		QSort(data, pivot+1, high);
+	}
+}
+
+function Partition(data, low, high) {
+	var pivotkey = data[low];
+
+	while(low<high) {
+		while(low<high&&data[high]>=pivotkey) {
+			high--;
+		}
+		data[low] = [data[high], data[low] = data[high]][0];
+
+		while(low<high&&data[low]<=pivotkey) {
+			low++;
+		}
+		data[low] = [data[high], data[low] = data[high]][0];
+	}
+	return low;
+}
