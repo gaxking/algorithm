@@ -1,74 +1,66 @@
-var count = 0;
-//冒泡排序
+
+/* 冒泡排序
+ * 双重循环，先把最小的值冒泡到顶端，再把次小的值冒泡到顶端
+ */
 function BubbleSort(data) {
 	for(var i = 0; i < data.length; i++) {
-		count ++;
 		for(var j = data.length; j > 0; j--) {
 			if(data[j] < data[j-1]) {
 				data[j] = [data[j-1], data[j-1] = data[j]][0];
 			}
-			count ++;
-			//console.log(data);
 		}
 	}
 	return data;
 }
 
-//简单选择排序
+/* 简单选择排序
+ * 双重循环，每次直接找到min的key，然后交换
+ */
 function SelectSort(data) {
 	for(var i = 0; i < data.length; i++) {
-		count ++;
 		var min = i;
 		for(var j = i+1; j < data.length; j++) {
 			if(data[j] < data[min]) {
 				min = j;
 			}
-			count ++;
 		}
 
 		if(min!=i) {
 			data[i] = [data[min], data[min] = data[i]][0];
 		}
-		//console.log(data);
 	}
 	return data;
 }
 
-//直接插入排序
+/* 直接插入排序
+ * 双重循环，每次直接找到min的key，然后交换
+ */
 function InsertSort(data) {
-	//var data = [5,3,4,6,2];
 	for(var i = 1; i <= data.length; i++) {
-		count ++;
 		if(data[i-1] > data[i]) {
 			var save = data[i];
 			for(var j = i - 1; data[j] > save; j--) {
 				data[j+1] = data[j];
-				count ++;
 			}
 			data[j+1] = save;
-			//console.log(data.toString());
 		}
 	}
 	return data;
 }
 
-//希尔排序
+//希尔排序(直接插入排序的升级版)
 function ShellSort(data) {
 	var increment = data.length;
 	do
 	{
-		count ++;
 		increment = parseInt(increment/3) + 1;
 		for(var i = increment;i<=data.length;i++) {
-			count ++;
 			if(data[i] < data[i-increment]) {
 				var save = data[i];
 				for(var j=i-increment;j>=0&&save<data[j];j-=increment) {
-					count ++;
 					data[j+increment] = data[j];
 				}
 				data[j+increment] = save;
-				//console.log(data.toString());
 			}
 		}
 	}
@@ -81,16 +73,12 @@ function HeapSort(data) {
 	data.unshift(null);
 
 	for(var i = parseInt((data.length-1)/2);i>0;i--) {
-		count++;
 		HeadAdjust(data, i, data.length-1);
-		//console.log(data.toString());
 	}
 
 	for(var x = data.length-1; x>0; x--) {
-		count++;
 		data[x] = [data[1], data[1] = data[x]][0];
 		HeadAdjust(data, 1, x-1);
-		//console.log(data);
 	}
 	return data;
 }
@@ -98,7 +86,6 @@ function HeapSort(data) {
 function HeadAdjust(data, s, l) {
 	var temp = data[s];
 	for(var j=2*s; j<=l; j*=2) {
-		count++;
 		if(j<l && data[j]<data[j+1]) {
 			j++;
 		}
@@ -118,7 +105,6 @@ function merge(left, right) {
 		}else{
 			result.push(right.shift());
 		}
-		count++;
 	}
 	return result.concat(left).concat(right);
 }
@@ -130,10 +116,10 @@ function mergeSort(data) {
 		left = data.slice(0, middle),
 		right = data.slice(middle);
 
-	count++;
 	return merge(mergeSort(left), mergeSort(right));
 }
 
+//快速排序(冒泡排序的升级版)
 function quickSort(data) {
 	QSort(data, 0, data.length-1);
 	return data;
