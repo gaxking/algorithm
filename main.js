@@ -151,3 +151,21 @@ function Partition(data, low, high) {
 	}
 	return low;
 }
+
+//二分法查找,arr:已徘好序的数组，x：查找目标
+function binarySearch(arr,x){
+	var low = 0; high = arr.length -1;
+	while(low <= high){
+		var mid = Math.floor((high + low)/2);
+
+		if(arr[mid] == x){
+			return mid;
+		}else if(arr[mid]>x){
+			high = mid-1;
+		}else{
+			low = mid+1;
+		}
+	}
+
+	return -1;
+}

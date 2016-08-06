@@ -18,6 +18,13 @@
 	<br>
 	<br>output:
 	<div id="output"></div>
+	<hr style="margin-top:300px;">
+	<button onclick="search('binarySearch')">二分查找</button>
+	<br>
+	查找目标：<input id="target" type="input" value="" />
+	<input id="input2" type="input" value="1,2,3,4,5,6,7" />
+	<br>output:
+	<div id="output2"></div>
 </body>
 <script>
 	var input = document.querySelector('#input'),
@@ -49,6 +56,18 @@
 			break;
 		}
 		output.innerHTML = result.toString();
+	}
+	var input2 = document.querySelector('#input2'),
+		target = document.querySelector('#target'),
+		output2 = document.querySelector('#output2');
+	function search(name){
+		var data = JSON.parse("[" + input2.value + "]"), result;
+		switch(name){
+			case 'binarySearch':
+				result = binarySearch(data,target.value);
+			break;
+		}
+		output2.innerHTML = result.toString();
 	}
 </script>
 <script src="main.js"></script>
