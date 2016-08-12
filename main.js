@@ -169,3 +169,12 @@ function binarySearch(arr,x){
 
 	return -1;
 }
+
+//字符串反转
+function strReverse(str){
+	var mid = Math.floor((str.length-1)/2),arr = str.split("");
+	for(var i = 0,last = arr.length-1;i <= mid;i++){
+		arr[i] = [arr[last-i],arr[last-i]=arr[i]][0];
+	}
+	return arr.join("");
+}
